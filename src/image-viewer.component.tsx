@@ -249,7 +249,7 @@ export default class ImageViewer extends React.Component<Props, State> {
   /**
    * 手势结束，但是没有取消浏览大图
    */
-  public handleResponderRelease = (vx: number = 0) => {
+  public handleResponderRelease = (vx: number = 0, scale: number) => {
     const vxRTL = I18nManager.isRTL ? -vx : vx;
     const isLeftMove = I18nManager.isRTL
       ? this.positionXNumber - this.standardPositionX < -(this.props.flipThreshold || 0)
@@ -258,6 +258,10 @@ export default class ImageViewer extends React.Component<Props, State> {
       ? this.positionXNumber - this.standardPositionX > (this.props.flipThreshold || 0)
       : this.positionXNumber - this.standardPositionX < -(this.props.flipThreshold || 0);
 
+    if(scale !== 1 || Math.abs(vxRTL) < 0.7){
+      return this.resetPosition();
+    };
+    
     if (vxRTL > 0.7) {
       // 上一张
       this.goBack.call(this);
