@@ -3262,9 +3262,9 @@ react-native-codegen@^0.0.6:
     nullthrows "^1.1.1"
 
 react-native-image-zoom-fixed@^2.2.2:
-  version "2.2.2"
-  resolved "https://registry.yarnpkg.com/react-native-image-zoom-fixed/-/react-native-image-zoom-fixed-2.2.2.tgz#121aa34d822423db30c42c076588d7ddff878a19"
-  integrity sha512-N77oS3Gz3GgHbYcWW1vjAnXU/ig51R23zkwXfO0MXX8bnxi94aI24TQ3qgdrA3WuBN/wo0KDG1b+VcuMzm046g==
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/react-native-image-zoom-fixed/-/react-native-image-zoom-fixed-2.2.3.tgz#25690460433176e6a0f14f1a3bb1afd053e0eba2"
+  integrity sha512-WvuWwjeqs5K8B9nXDkD/TE2L2+J66C2xR1+uzQA0lFpzp1ITdjry9h+UoB23l/WIYfO71vXMi4Pd1JwFH/WW1w==
 
 react-native@*:
   version "0.64.2"
