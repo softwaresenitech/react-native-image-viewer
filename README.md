@@ -17,7 +17,7 @@
 ### Installation
 
 ```bash
-npm i react-native-image-zoom-viewer --save
+yarn add react-native-image-zoom-viewer-fixed
 ```
 
 ### Basic Usage

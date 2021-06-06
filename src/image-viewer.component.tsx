@@ -15,7 +15,7 @@ import {
   View,
   ViewStyle
 } from 'react-native';
-import ImageZoom from 'react-native-image-pan-zoom';
+import ImageZoom from 'react-native-image-zoom-fixed';
 import styles from './image-viewer.style';
 import { IImageInfo, IImageSize, Props, State } from './image-viewer.type';
 
@@ -87,7 +87,7 @@ export default class ImageViewer extends React.Component<Props, State> {
 
     // 给 imageSizes 塞入空数组
     const imageSizes: IImageSize[] = [];
-    nextProps.imageUrls.forEach(imageUrl => {
+    nextProps.imageUrls.forEach((imageUrl) => {
       imageSizes.push({
         width: imageUrl.width || 0,
         height: imageUrl.height || 0,
@@ -258,10 +258,10 @@ export default class ImageViewer extends React.Component<Props, State> {
       ? this.positionXNumber - this.standardPositionX > (this.props.flipThreshold || 0)
       : this.positionXNumber - this.standardPositionX < -(this.props.flipThreshold || 0);
 
-    if(scale !== 1 || Math.abs(vxRTL) < 0.7){
+    if (scale !== 1 || Math.abs(vxRTL) < 0.7) {
       return this.resetPosition();
-    };
-    
+    }
+
     if (vxRTL > 0.7) {
       // 上一张
       this.goBack.call(this);
@@ -542,7 +542,8 @@ export default class ImageViewer extends React.Component<Props, State> {
           return (
             <ImageZoom
               key={index}
-              ref={el => (this.imageRefs[index] = el)}
+              // @ts-ignore
+              ref={(el) => (this.imageRefs[index] = el)}
               cropWidth={this.width}
               cropHeight={this.height}
               maxOverflow={this.props.maxOverflow}
