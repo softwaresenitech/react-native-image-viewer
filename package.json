@@ -15,7 +15,7 @@
   "author": "ascoders",
   "license": "MIT",
   "dependencies": {
-    "react-native-image-zoom-fixed": "^2.2.4"
+    "react-native-image-zoom-fixed": "^2.2.5"
   },
   "peerDependencies": {
     "react": "*",
