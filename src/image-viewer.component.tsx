@@ -16,7 +16,8 @@ import {
   ViewStyle
 } from 'react-native';
 import ImageZoom from 'react-native-image-zoom-fixed';
-import * as ImageSize from 'react-native-image-size';
+// @ts-ignore
+import ImageSize from 'react-native-image-size';
 import styles from './image-viewer.style';
 import { IImageInfo, IImageSize, Props, State } from './image-viewer.type';
 
@@ -195,6 +196,7 @@ export default class ImageViewer extends React.Component<Props, State> {
       return;
     }
 
+    // @ts-ignore
     ImageSize.getSize(image.url).then(({ width, height }) => {
       imageStatus.width = width;
       imageStatus.height = height;
