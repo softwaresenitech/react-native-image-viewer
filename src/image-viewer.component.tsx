@@ -35,8 +35,8 @@ export default class ImageViewer extends React.Component<Props, State> {
   private positionXNumber = 0;
   private positionX = new Animated.Value(0);
 
-  private width = 0;
-  private height = 0;
+  private width = Dimensions.get('window').width;
+  private height = Dimensions.get('window').height;
 
   private styles = styles(0, 0, 'transparent');
 
@@ -91,6 +91,7 @@ export default class ImageViewer extends React.Component<Props, State> {
     const imageSizes: IImageSize[] = [];
     nextProps.imageUrls.forEach((imageUrl) => {
       imageSizes.push({
+        zoomLevel: 1,
         width: imageUrl.width || 0,
         height: imageUrl.height || 0,
         status: 'loading'
@@ -209,6 +210,7 @@ export default class ImageViewer extends React.Component<Props, State> {
       (width: number, height: number) => {
         imageStatus.width = width;
         imageStatus.height = height;
+        imageStatus.zoomLevel = this.width / width;
         imageStatus.status = 'success';
         saveImageSize();
       },
@@ -268,11 +270,14 @@ export default class ImageViewer extends React.Component<Props, State> {
       ? this.positionXNumber - this.standardPositionX > (this.props.flipThreshold || 0)
       : this.positionXNumber - this.standardPositionX < -(this.props.flipThreshold || 0);
 
-    if (scale !== 1 || Math.abs(vxRTL) < 0.7) {
+    const index = this.state.currentShowIndex || 0;
+    let minZoom = this.state.imageSizes![index] && this.state.imageSizes![index].zoomLevel;
+
+    if (scale !== minZoom || Math.abs(vxRTL) < 0.5) {
       return this.resetPosition();
     }
 
-    if (vxRTL > 0.7) {
+    if (vxRTL > 0.5) {
       // 上一张
       this.goBack.call(this);
 
@@ -281,7 +286,7 @@ export default class ImageViewer extends React.Component<Props, State> {
         this.loadImage((this.state.currentShowIndex || 0) - 1);
       }
       return;
-    } else if (vxRTL < -0.7) {
+    } else if (vxRTL < -0.5) {
       // 下一张
       this.goNext.call(this);
       if (this.state.currentShowIndex || 0 < this.props.imageUrls.length - 1) {
@@ -462,6 +467,7 @@ export default class ImageViewer extends React.Component<Props, State> {
 
       let width = this!.state!.imageSizes![index] && this!.state!.imageSizes![index].width;
       let height = this.state.imageSizes![index] && this.state.imageSizes![index].height;
+      let minZoom = this.state.imageSizes![index] && this.state.imageSizes![index].zoomLevel;
       const imageInfo = this.state.imageSizes![index];
 
       if (!imageInfo || !imageInfo.status) {
@@ -572,7 +578,7 @@ export default class ImageViewer extends React.Component<Props, State> {
               pinchToZoom={this.props.enableImageZoom && !this.state.isShowMenu}
               enableDoubleClickZoom={this.props.enableImageZoom && !this.state.isShowMenu}
               doubleClickInterval={this.props.doubleClickInterval}
-              minScale={this.props.minScale}
+              minScale={minZoom || this.props.minScale}
               maxScale={this.props.maxScale}
             >
               {this!.props!.renderImage!(image.props)}
