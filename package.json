@@ -1,6 +1,6 @@
 {
   "name": "react-native-image-zoom-viewer-fixed",
-  "version": "3.1.91",
+  "version": "3.1.92",
   "description": "react native image viewer,大图浏览",
   "repository": "https://github.com/ktjd123/react-native-image-viewer",
   "main": "built/index.js",
@@ -16,7 +16,7 @@
   "license": "MIT",
   "dependencies": {
     "react-native-image-size": "^1.1.3",
-    "react-native-image-zoom-fixed": "^2.2.8"
+    "react-native-image-zoom-fixed": "^2.2.9"
   },
   "peerDependencies": {
     "react": "*",
