@@ -3266,10 +3266,10 @@ react-native-image-size@^1.1.3:
   resolved "https://registry.yarnpkg.com/react-native-image-size/-/react-native-image-size-1.1.3.tgz#7d69c2cd4e1d1632947867e47643ed8cabb9de27"
   integrity sha512-jJvN6CjXVAm69LAVZNV7m7r50Qk9vuPZwLyrbs/k31/3Xs8bZyVCdvfP44FuBisITn/yFsiOo6i8NPrFBPH20w==
 
-react-native-image-zoom-fixed@^2.2.5:
-  version "2.2.5"
-  resolved "https://registry.yarnpkg.com/react-native-image-zoom-fixed/-/react-native-image-zoom-fixed-2.2.5.tgz#57e9b470597dc89a9e6207a06b449399544164fd"
-  integrity sha512-HGMxYRTrBD5zNI0GC3BAHR54r4hqbrexBHrB7dKI4S7Dd4qF6549fbidslUWhMoNk0R/YmXEBf+UPgueDASFxw==
+react-native-image-zoom-fixed@^2.2.9:
+  version "2.2.9"
+  resolved "https://registry.yarnpkg.com/react-native-image-zoom-fixed/-/react-native-image-zoom-fixed-2.2.9.tgz#557f95be2d9fe29f47882874a2e95bb624a8f8b8"
+  integrity sha512-QzOrgeQZPNLhxBtLV043M0ZwXC7buME6NesAadT+Ao+fJzE/qcYUWYeXFMvY+ynWWbOaTk/YRkmFab3Ovva32A==
 
 react-native@*:
   version "0.64.2"
