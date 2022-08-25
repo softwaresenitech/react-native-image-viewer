@@ -210,7 +210,7 @@ export default class ImageViewer extends React.Component<Props, State> {
       (width: number, height: number) => {
         imageStatus.width = width;
         imageStatus.height = height;
-        imageStatus.zoomLevel = this.width / width;
+        imageStatus.zoomLevel =  (this.width - (this.width * 0.1)) / width;
         imageStatus.status = 'success';
         saveImageSize();
       },
