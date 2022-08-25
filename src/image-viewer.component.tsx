@@ -577,7 +577,7 @@ export default class ImageViewer extends React.Component<Props, State> {
               panToMove={!this.state.isShowMenu}
               pinchToZoom={this.props.enableImageZoom && !this.state.isShowMenu}
               enableDoubleClickZoom={this.props.enableImageZoom && !this.state.isShowMenu}
-              doubleClickInterval={this.props.doubleClickInterval}
+              doubleClickInterval={500}
               minScale={minZoom || this.props.minScale}
               maxScale={this.props.maxScale}
             >
