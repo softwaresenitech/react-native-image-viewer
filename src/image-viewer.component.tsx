@@ -91,7 +91,7 @@ export default class ImageViewer extends React.Component<Props, State> {
     const imageSizes: IImageSize[] = [];
     nextProps.imageUrls.forEach((imageUrl) => {
       imageSizes.push({
-        zoomLevel: 0.5,
+        zoomLevel: 0.8,
         width: imageUrl.width || 0,
         height: imageUrl.height || 0,
         status: 'loading'
@@ -210,7 +210,7 @@ export default class ImageViewer extends React.Component<Props, State> {
       (width: number, height: number) => {
         imageStatus.width = width;
         imageStatus.height = height;
-        imageStatus.zoomLevel = 0.5 || this.width / width;
+        imageStatus.zoomLevel = 0.8 || this.width / width;
         imageStatus.status = 'success';
         saveImageSize();
       },
