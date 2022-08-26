@@ -8,6 +8,7 @@ import {
   Image,
   PanResponder,
   Platform,
+  SafeAreaView,
   Text,
   TouchableHighlight,
   TouchableOpacity,
@@ -210,7 +211,7 @@ export default class ImageViewer extends React.Component<Props, State> {
       (width: number, height: number) => {
         imageStatus.width = width;
         imageStatus.height = height;
-        imageStatus.zoomLevel =  (this.width - (this.width * 0.1)) / width;
+        imageStatus.zoomLevel =  this.width / width;
         imageStatus.status = 'success';
         saveImageSize();
       },
@@ -680,7 +681,7 @@ export default class ImageViewer extends React.Component<Props, State> {
     }
 
     return (
-      <View style={this.styles.menuContainer}>
+      <SafeAreaView style={this.styles.menuContainer}>
         <View style={this.styles.menuShadow} />
         <View style={this.styles.menuContent}>
           <TouchableHighlight underlayColor="#F2F2F2" onPress={this.saveToLocal} style={this.styles.operateContainer}>
@@ -694,7 +695,7 @@ export default class ImageViewer extends React.Component<Props, State> {
             <Text style={this.styles.operateText}>{this.props.menuContext.cancel}</Text>
           </TouchableHighlight>
         </View>
-      </View>
+      </SafeAreaView>
     );
   }
 
