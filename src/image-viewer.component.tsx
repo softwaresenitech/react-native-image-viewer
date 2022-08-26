@@ -21,7 +21,7 @@ import ImageZoom from 'react-native-image-zoom-fixed';
 import ImageSize from 'react-native-image-size';
 import styles from './image-viewer.style';
 import { IImageInfo, IImageSize, Props, State } from './image-viewer.type';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
+// import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export default class ImageViewer extends React.Component<Props, State> {
   public static defaultProps = new Props();
@@ -37,10 +37,10 @@ export default class ImageViewer extends React.Component<Props, State> {
   private positionXNumber = 0;
   private positionX = new Animated.Value(0);
 
-  private insets = useSafeAreaInsets();
+  // private insets = useSafeAreaInsets();
 
   private width = Dimensions.get('window').width;
-  private height = Dimensions.get('window').height - this.insets.bottom - this.insets.top;
+  private height = Dimensions.get('window').height;
 
   private styles = styles(0, 0, 'transparent');
 
