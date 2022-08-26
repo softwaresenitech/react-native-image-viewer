@@ -40,7 +40,9 @@ export default class ImageViewer extends React.Component<Props, State> {
   // private insets = useSafeAreaInsets();
 
   private width = Dimensions.get('window').width;
-  private height = Dimensions.get('window').height - this.props?.insetsBottom || 0 - this.props?.insetsTop || 0;
+  private insetBottom = this.props.insetsBottom || 0;
+  private insetTop = this.props.insetsBottom || 0;
+  private height = Dimensions.get('window').height - this.insetBottom - this.insetTop;
 
   private styles = styles(0, 0, 'transparent');
 
