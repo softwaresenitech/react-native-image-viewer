@@ -11,6 +11,12 @@ interface IOnMove {
 }
 
 export class Props {
+
+  //assume inset is for statusbar and navigation bar (by os)
+  public insetsTop?: number = 0;
+  public insetsBottom?: number = 0;
+
+
   /**
    * 是否显示
    */
