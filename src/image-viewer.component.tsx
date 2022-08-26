@@ -42,7 +42,7 @@ export default class ImageViewer extends React.Component<Props, State> {
   private width = Dimensions.get('window').width;
   private insetBottom = this.props.insetsBottom || 0;
   private insetTop = this.props.insetsBottom || 0;
-  private height = Dimensions.get('window').height - 25;
+  private height = Dimensions.get('window').height;
 
   private styles = styles(0, 0, 'transparent');
 
@@ -445,7 +445,10 @@ export default class ImageViewer extends React.Component<Props, State> {
       this.hasLayout = true;
 
       this.width = event.nativeEvent.layout.width;
-      this.height = event.nativeEvent.layout.height;
+      const insetBottom = this.props.insetsBottom || 0
+      const insetTop = this.props.insetsTop || 0
+      console.log(insetBottom, ' <<< insets')
+      this.height = event.nativeEvent.layout.height - insetBottom - insetTop;
       this.styles = styles(this.width, this.height, this.props.backgroundColor || 'transparent');
 
       // 强制刷新
@@ -459,8 +462,12 @@ export default class ImageViewer extends React.Component<Props, State> {
    */
   public getContent() {
     // 获得屏幕宽高
+    const insetBottom = this.props.insetsBottom || 0
+    const insetTop = this.props.insetsTop || 0
+    console.log(insetBottom, ' <<< insets')
+
     const screenWidth = this.width;
-    const screenHeight = this.height;
+    const screenHeight = this.height - insetBottom - insetTop;
 
     const ImageElements = this.props.imageUrls.map((image, index) => {
       if ((this.state.currentShowIndex || 0) > index + 1 || (this.state.currentShowIndex || 0) < index - 1) {
@@ -497,7 +504,7 @@ export default class ImageViewer extends React.Component<Props, State> {
       const Wrapper = ({ children, ...others }: any) => (
         <ImageZoom
           cropWidth={this.width}
-          cropHeight={this.height}
+          cropHeight={this.height - insetBottom - insetTop}
           maxOverflow={this.props.maxOverflow}
           horizontalOuterRangeOffset={this.handleHorizontalOuterRangeOffset}
           responderRelease={this.handleResponderRelease}
@@ -567,7 +574,7 @@ export default class ImageViewer extends React.Component<Props, State> {
               // @ts-ignore
               ref={(el) => (this.imageRefs[index] = el)}
               cropWidth={this.width}
-              cropHeight={this.height}
+              cropHeight={this.height - insetBottom - insetTop}
               maxOverflow={this.props.maxOverflow}
               horizontalOuterRangeOffset={this.handleHorizontalOuterRangeOffset}
               responderRelease={this.handleResponderRelease}
