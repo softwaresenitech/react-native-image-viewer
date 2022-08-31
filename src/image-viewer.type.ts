@@ -11,6 +11,8 @@ interface IOnMove {
 }
 
 export class Props {
+
+  public doubleTapThreshold?: number = 400;
   /**
    * 是否显示
    */
