@@ -16,7 +16,7 @@
   "license": "MIT",
   "dependencies": {
     "react-native-image-size": "^1.1.3",
-    "react-native-image-zoom-fixed": "git+https://github.com/prieyudaarvis/react-native-image-zoom"
+    "react-native-image-zoom-fixed": "git+https://github.com/softwaresenitech/react-native-image-zoom"
   },
   "peerDependencies": {
     "react": "*",
